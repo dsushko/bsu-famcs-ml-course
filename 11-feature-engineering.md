@@ -73,9 +73,11 @@ footer: БГУ ФПМИ ФМИиС
     *   **Для числовых признаков:** Корреляция Пирсона, дисперсионный анализ (ANOVA).
     *   **Для категориальных:** $\chi^2$ (хи-квадрат), взаимная информация (Mutual Information).
 *   **Плюсы:** Быстро, не зависит от модели.
-*   **Минусы:** Игнорирует взаимодействие признаков.
+*   **Минусы:** 
+    - Игнорирует взаимодействие признаков.
+    - Можно ошибочно выбрать признаки с проблемой correlation/causation.
 
-![bg right:40% w:400](https://www.researchgate.net/publication/336925481/figure/fig3/AS:819588297416704@1572603280530/Feature-selection-using-Pearson-Correlation-Method.png)
+![bg right:40% w:500](https://media.licdn.com/dms/image/v2/D5612AQGunviFk-bacw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1667686635779?e=2147483647&v=beta&t=Q1w0VhGzO54BOh3HJc-0qn_3Gpc1Nh_KlT7s_Y0UG_E)
 
 ---
 
@@ -89,8 +91,6 @@ footer: БГУ ФПМИ ФМИиС
 *   **Плюсы:** Учитывает взаимодействие признаков, часто дает лучшее качество.
 *   **Минусы:** Медленно (нужно много раз обучать модель).
 
-![bg right:40% w:400](https://media.geeksforgeeks.org/wp-content/uploads/20240527151812/Recursive-Feature-Elimination-RFE.webp)
-
 ---
 
 ## **Методы отбора признаков (Embedded Methods)**
@@ -103,7 +103,7 @@ footer: БГУ ФПМИ ФМИиС
 *   **Плюсы:** Быстро (не требует отдельного шага), эффективно.
 *   **Минусы:** Привязано к конкретной модели.
 
-![bg right:40% w:400](https://www.researchgate.net/publication/358787850/figure/fig1/AS:1115383188918272@1643963654865/Feature-selection-using-LASSO-regression-A-Bar-plot-showing-the-features-selected-by.png)
+![bg right:40% w:500](https://towardsdatascience.com/wp-content/uploads/2022/05/1ZeINTX82W7vwqLMHHWEaTQ.jpeg)
 
 ---
 
@@ -116,8 +116,6 @@ footer: БГУ ФПМИ ФМИиС
 *   Представить данные в более **понятном для алгоритма** виде.
 *   Это творческий процесс, требующий **знания предметной области**.
 
-![bg right:40% w:400](https://miro.medium.com/v2/resize:fit:1400/1*6s0IPU1Hc2w2M6lKFrT-A.png)
-
 ---
 
 ## **Конструирование в табличных данных (Числовые признаки)**
@@ -128,8 +126,6 @@ footer: БГУ ФПМИ ФМИиС
 *   **Логарифмирование:** `log(Зарплата)`. Для работы с правосторонним skewness.
 *   **Агрегаты:** `Средний_чек_пользователя`, `Количество_операций_за_день`.
 
-![bg right:40% w:400](https://www.researchgate.net/publication/362001748/figure/fig1/AS:11431281085358024@1658568224209/Feature-engineering-techniques-applied-on-the-dataset.ppm)
-
 ---
 
 ## **Конструирование в табличных данных (Категориальные признаки)**
@@ -139,7 +135,8 @@ footer: БГУ ФПМИ ФМИиС
 *   **Target Encoding (Mean Encoding):** Замена категории на среднее значение целевой переменной по этой категории. **Осторожно: риск переобучения!**
 *   **Создание новых категорий:** Объединение редких категорий в `Other`.
 
-![bg right:40% w:400](https://docs.rapidminer.com/latest/studio/operators/images/encoding_nominal_to_numerical.svg)
+![bg vertical right:40% w:500](https://miro.medium.com/v2/resize:fit:1400/0*mzU8quf7t-FHJETT.png)
+![bg vertical right:40% w:500](https://habrastorage.org/getpro/habr/upload_files/d85/93e/527/d8593e527edced50d1d22c8e32a05b85.png)
 
 ---
 
@@ -150,31 +147,7 @@ footer: БГУ ФПМИ ФМИиС
 *   **Время с момента события:** `Дней_с_последней_покупки`.
 *   **Извлечение цикличности:** `sin(день_года)`, `cos(день_года)` для моделирования сезонности.
 
-![bg right:40% w:400](https://miro.medium.com/v2/resize:fit:1400/1*_6M4nk6sEkj7_ESM4nqirA.png)
-
----
-
-## **Конструирование в нетабличных данных (Текст)**
-# От мешка слов к смыслу
-
-*   **Bag of Words / TF-IDF:** Классические подходы, представляют текст как вектор частот слов.
-*   **N-граммы:** Учитывают сочетания слов (например, "очень крутой" vs "очень" + "крутой").
-*   **Извлечение сущностей (NER):** Поиск в тексте имен, названий компаний, мест.
-*   **Эмбеддинги (Word2Vec, BERT):** Современные методы, представляющие слова/предложения в виде плотных векторов, сохраняющих семантику.
-
-![bg right:40% w:400](https://miro.medium.com/v2/resize:fit:1400/1*5SRO3kq2Qc7j_0c6cN2QZg.png)
-
----
-
-## **Конструирование в нетабличных данных (Изображения)**
-# Признаки — это не только пиксели
-
-*   **Признаки "ручной работы" (Hand-crafted):**
-    *   **HOG (Histogram of Oriented Gradients):** Для обнаружения объектов.
-    *   **SIFT, SURF:** Для поиска и сопоставления ключевых точек.
-*   **Использование предобученных CNN:** Взятие признаков из промежуточных слоев сверточной нейросети (например, VGG, ResNet) как готового векторного представления изображения.
-
-![bg right:40% w:400](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/HOG.png/440px-HOG.png)
+![bg right:45% w:550](https://freemanbrain.space/images/Pasted-image-20231024082626.png)
 
 ---
 
@@ -186,18 +159,15 @@ footer: БГУ ФПМИ ФМИиС
 *   **Плюсы:** Экономит время, может найти неочевидные зависимости.
 *   **Минусы:** Может создать много мусора, требует последующего жесткого отбора.
 
-![bg right:40% w:400](https://featuretools.com/wp-content/uploads/2017/12/2-Deep-Feature-Synthesis-1-1024x518.png)
-
 ---
 
 <!-- _class: lead -->
-# **Выводы**
-## Ключевые takeaways
+# **Итого**
 
 *   **Feature Selection** и **Feature Engineering** — критически важные этапы пайплайна.
 *   **Отбор** делает модели быстрее, стабильнее и понятнее.
 *   **Конструирование** — это творчество, которое сильно повышает качество моделей, особенно при знании предметной области.
-*   **Лучшие практики:** Все преобразования нужно учить на тренировочной выборке, чтобы избежать data leakage.
-*   **Помните:** Качество ваших данных определяет потолок качества вашей модели.
+*   Все преобразования нужно учить на тренировочной выборке, чтобы избежать data leakage.
+*   Качество ваших данных определяет потолок качества вашей модели.
 
 ![bg opacity](https://miro.medium.com/v2/resize:fit:1400/1*_6M4nk6sEkj7_ESM4nqirA.png)

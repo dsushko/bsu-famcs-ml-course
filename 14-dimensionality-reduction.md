@@ -40,8 +40,6 @@ footer: БГУ ФПМИ ФМИиС
 # **Понижение размерности: Искусство видеть суть**
 ## PCA, t-SNE и UMAP — как упрощать данные без потери смысла
 
-![bg right](https://miro.medium.com/v2/resize:fit:1400/1*TUC6L4zNgqVWkieQW4yqBg.gif)
-<!-- Подсказка для картинки: "PCA 3D to 2D projection", "Dimensionality Reduction GIF". Хорошая картинка — облако точек, проецируемое из 3D на 2D плоскость. -->
 
 ---
 
@@ -55,7 +53,9 @@ footer: БГУ ФПМИ ФМИиС
 
 **Вывод:** Необходимы методы, которые уменьшают размерность, сохраняя важную информацию.
 
-![bg right w:450](https://www.researchgate.net/publication/350581089/figure/fig1/AS:1009780502267905@1617228446165/Curse-of-dimensionality-All-the-data-points-become-equidistant-from-each-other-as-the.jpg)
+---
+
+![bg w:1200](https://www.researchgate.net/publication/340336503/figure/fig2/AS:875428306763780@1585729781956/llustration-of-the-curse-of-dimensionality-affecting-the-choice-of-a-suitable-neighbor-in.png)
 <!-- Подсказка: "Curse of Dimensionality equidistant points" -->
 
 ---
@@ -69,7 +69,7 @@ footer: БГУ ФПМИ ФМИиС
 *   **Подавление шума:** Отфильтровать неинформативные признаки.
 *   **Улучшение качества моделей:** Борьба с переобучением.
 
-![bg right w:450](https://scikit-learn.org/stable/_images/sphx_glr_plot_compare_methods_001.png)
+![bg right w:600](https://www.megatrend.com/wp-content/uploads/2022/10/4.jpg)
 <!-- Подсказка: "High Dimensional Data Visualization", "MNIST t-SNE PCA UMAP comparison" -->
 
 ---
@@ -99,7 +99,7 @@ footer: БГУ ФПМИ ФМИиС
     *   **PC2** объясняет следующую и т.д.
 *   **Результат:** Проекция данных в подпространство с **максимально сохраненной дисперсией**.
 
-![bg right w:500](https://i.stack.imgur.com/lWYPO.png)
+![bg right w:500](https://miro.medium.com/1*V9yJUH9tVrMQI88TuIkCFQ.gif)
 <!-- Подсказка: "PCA principal components", "PCA variance visualization" -->
 
 ---
@@ -120,11 +120,11 @@ footer: БГУ ФПМИ ФМИиС
 ### **Как выбрать число компонент?**
 ## Интерпретация и использование PCA
 
-*   **График "каменистой осыпи" (Scree Plot):** График собственных значений. Выбирают `k` на "локте" графика.
+*   **Метод локтя:** График собственных значений. Выбирают `k` на "локте" графика.
 *   **Объясненная дисперсия:** Выбирают `k` для сохранения >95% дисперсии.
 *   **Важно:** PCA — **линейный** метод.
 
-![bg right w:500](https://i.ytimg.com/vi/oap3lLLpq-c/maxresdefault.jpg)
+![bg right w:500](https://upload.wikimedia.org/wikipedia/commons/a/ac/Screeplotr.png)
 <!-- Подсказка: "PCA Scree Plot", "Explained Variance Plot" -->
 
 ---
@@ -151,28 +151,21 @@ footer: БГУ ФПМИ ФМИиС
 *   **Акцент на близких объектах:** Фокусируется на сохранении **локальных соседств** и **кластерной структуры**.
 *   **Идеально для визуализации.**
 
-![bg right w:500](https://distill.pub/2016/misread-tsne/assets/teaser.jpeg)
+![w:1200](https://miro.medium.com/v2/resize:fit:2000/0*vz4K-fqiy19u_W-9)
 <!-- Подсказка: "t-SNE clusters visualization", "t-SNE MNIST" -->
 
 ---
 
 ### **Построение распределений вероятностей**
-## Как работает t-SNE (1/2)
+## Как работает t-SNE
 
-*   **В исходном пространстве:** Для каждой пары точек вычисляется вероятность того, что они являются соседями (гауссово распределение).
+*   **В исходном пространстве:** Для каждой пары точек вычисляется вероятность того, что они являются соседями (с вероятностным предположением о нормальном распределении).
 *   **В целевом пространстве (2D/3D):** Строится похожее распределение (**распределение Стьюдента**).
 *   **Цель алгоритма:** Сделать эти два распределения **максимально похожими**.
-
----
-
-### **Минимизация расхождения Кульбака-Лейблера**
-## Как работает t-SNE (2/2)
-
 *   **Функция потерь:** **Расхождение Кульбака-Лейблера (KL divergence)** между двумя распределениями.
 *   **Оптимизация:** Градиентный спуск для минимизации KL divergence.
 *   **Роль распределения Стьюдента:** Его тяжелые хвосты "раздвигают" точки, предотвращая скучивание.
 
-![bg right w:450](https://miro.medium.com/v2/resize:fit:1000/1*PvVb6UHDkSJgWQnkga6hJg.png)
 <!-- Подсказка: "t-SNE KL divergence", "Gaussian vs T-distribution" -->
 
 ---
@@ -184,7 +177,7 @@ footer: БГУ ФПМИ ФМИиС
 *   **Learning Rate:** Скорость обучения для градиентного спуска.
 *   **Важно:** **Результат не детерминирован!** Разные запуски могут давать разную визуализацию.
 
-![bg right w:450](https://oreilly-media.s3-us-west-2.amazonaws.com/up-and-running-with-scikit-learn/figures/tsne_perplexity.png)
+![bg right w:550](https://www.scdiscoveries.com/wp-content/uploads/2023/03/Different-perplexitites-1024x434.webp)
 <!-- Подсказка: "t-SNE perplexity effect", "t-SNE different parameters" -->
 
 ---
@@ -211,13 +204,11 @@ footer: БГУ ФПМИ ФМИиС
 *   **Цель:** Найти **низкоразмерное представление**, **топологически близкое** к исходным данным.
 *   **Сохраняет** и **локальную**, и **глобальную** структуру.
 
-![bg right w:500](https://pair-code.github.io/understanding-umap/images/embedding.png)
+![bg right w:700](https://miro.medium.com/v2/resize:fit:1400/1*fGQImmija7kepddB7SFaGA.jpeg)
 <!-- Подсказка: "UMAP manifold", "UMAP topological representation" -->
 
 ---
-
-### **Построение топологического представления**
-## Как работает UMAP (1/2)
+## Как работает UMAP
 
 **Фаза 1: Построение графа в высоком пространстве.**
 *   Для каждой точки находят `k` ближайших соседей.
@@ -226,18 +217,12 @@ footer: БГУ ФПМИ ФМИиС
 **Фаза 2: Построение графа в низком пространстве.**
 *   Строят аналогичный граф в 2D.
 *   Минимизируют **расстояние** между этими двумя графами.
-
----
-
-### **Ключевые преимущества**
-## Как работает UMAP (2/2)
-
 *   **Скорость:** Алгоритмическая сложность **O(n^{1.14})**, что намного быстрее t-SNE.
 *   **Сохранение глобальной структуры:** Лучше сохраняет относительное расположение кластеров.
 *   **Гибкость:** Можно использовать для общего **нелинейного понижения размерности** (не только для 2D/3D).
 
-![bg right w:450](https://raw.githubusercontent.com/lmcinnes/umap/master/docs/images/embedding_example.png)
-<!-- Подсказка: "UMAP speed comparison", "UMAP vs t-SNE global structure" -->
+---
+![bg w:500](https://habrastorage.org/getpro/habr/upload_files/a85/ad8/41d/a85ad841d7d1f6ecaf31962d240dbc26.png)
 
 ---
 
@@ -273,15 +258,5 @@ footer: БГУ ФПМИ ФМИиС
 *   **PCA** — для **линейного** сжатия данных, ускорения алгоритмов. **Интерпретируем.**
 *   **t-SNE** — золотой стандарт для **визуализации кластеров**. Медленный, но красивый.
 *   **UMAP** — современная, **быстрая** альтернатива, лучше сохраняет **глобальную структуру**. Универсален.
-*   **Всегда масштабируйте данные** перед PCA и рекомендуется перед t-SNE/UMAP.
+*   **Всегда масштабируйте данные** перед PCA (рекомендуется и перед t-SNE/UMAP).
 *   **Цель определяет метод:** визуализация (t-SNE/UMAP) или подготовка данных (PCA).
-
----
-
-# **Спасибо за внимание!**
-## Вопросы?
-
-**Контакты:** Ваша почта / Telegram
-
-![bg opacity](https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)
-<!-- Подсказка: "Data science abstract background", "Network connection background" -->
