@@ -76,7 +76,7 @@ footer: БГУ ФПМИ ФМИиС
 
 **Ответ:** Та, что находится на **максимальном расстоянии** от ближайших точек каждого класса.
 
-![bg right:40% w:400](https://raw.githubusercontent.com/andreinechaev/svm_gif/master/svm_gif.gif)
+![bg right:40% w:400](https://torchbearer.readthedocs.io/en/0.2.2/_images/svm_fit.gif)
 *Поиск оптимальной гиперплоскости*
 
 ---
